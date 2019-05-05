@@ -24,14 +24,14 @@ namespace vAdmin
         String getAddressById(ulong id)
         {
             WebClient wc = new WebClient();
-            String ret = wc.DownloadString("http://10.0.0.100/address.php?id=" + id.ToString());
+            String ret = wc.DownloadString("http://10.0.0.100/address?id=" + id.ToString());
             return ret;
         }
 
         String getAddressByParent(ulong parent)
         {
             WebClient wc = new WebClient();
-            String ret = wc.DownloadString("http://10.0.0.100/address.php?parent=" + parent.ToString());
+            String ret = wc.DownloadString("http://10.0.0.100/address?parent=" + parent.ToString());
             return ret;
         }
         String addAddress(String name, ulong parent, String fullAddress)
@@ -43,7 +43,7 @@ namespace vAdmin
             WebClient wc = new WebClient();
             String data = "name=" + System.Web.HttpUtility.UrlEncode(name) + "&parent=" + parent.ToString() + "&lon=" + pos.Split(' ')[0] + "&lat=" + pos.Split(' ')[1];
             wc.Headers.Set(HttpRequestHeader.ContentType, "application/x-www-form-urlencoded");
-            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address.php", System.Text.Encoding.Default.GetBytes(data)));
+            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address", System.Text.Encoding.Default.GetBytes(data)));
             return ret;
         }
         String addAddress(String name, ulong parent)
@@ -51,7 +51,7 @@ namespace vAdmin
             WebClient wc = new WebClient();
             String data = "name=" + System.Web.HttpUtility.UrlEncode(name) + "&parent=" + parent.ToString();
             wc.Headers.Set(HttpRequestHeader.ContentType, "application/x-www-form-urlencoded");
-            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address.php", System.Text.Encoding.Default.GetBytes(data)));
+            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address", System.Text.Encoding.Default.GetBytes(data)));
             return ret;
         }
         String addAddress(String name)
@@ -59,7 +59,7 @@ namespace vAdmin
             WebClient wc = new WebClient();
             String data = "name=" + System.Web.HttpUtility.UrlEncode(name) + "&parent=0";
             wc.Headers.Set(HttpRequestHeader.ContentType, "application/x-www-form-urlencoded");
-            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address.php", System.Text.Encoding.Default.GetBytes(data)));
+            String ret = System.Text.Encoding.Default.GetString(wc.UploadData("http://10.0.0.100/address", System.Text.Encoding.Default.GetBytes(data)));
             return ret;
         }
 
@@ -112,7 +112,7 @@ namespace vAdmin
             //pos.IndexOf("\"Point\":{\"pos\":\"") + 16) - pos.IndexOf("\"Point\":{\"pos\":\"") - 16);
 
             //String data = "id=" + id.ToString() + "&lon=" + pos.Split(' ')[0] + "&lat=" + pos.Split(' ')[1];
-            //WebRequest r = WebRequest.Create("http://10.0.0.100/address.php");
+            //WebRequest r = WebRequest.Create("http://10.0.0.100/address");
             //r.ContentType = "application/x-www-form-urlencoded";
             //r.Method = "PUT";
             //r.GetRequestStream().Write(System.Text.Encoding.Default.GetBytes(data), 0, data.Length);
@@ -129,7 +129,7 @@ namespace vAdmin
             String data = "id=" + id.ToString();
             try
             {
-                WebRequest r = WebRequest.Create("http://10.0.0.100/address.php");
+                WebRequest r = WebRequest.Create("http://10.0.0.100/address");
                 r.ContentType = "application/x-www-form-urlencoded";
                 r.Method = "DELETE";
                 r.GetRequestStream().Write(System.Text.Encoding.Default.GetBytes(data), 0, data.Length);

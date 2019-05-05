@@ -6,18 +6,18 @@ using System.Windows.Forms;
 
 namespace vAdmin
 {
-    public partial class Contenders : Form
+    public partial class Rivals : Form
     {
-        public Contenders()
+        public Rivals()
         {
             InitializeComponent();
         }
 
-        private void Contenders_Load(object sender, EventArgs e)
+        private void Rivals_Load(object sender, EventArgs e)
         {
             List<Pair<ulong, String>> voteList = new List<Pair<ulong, string>>();
             WebClient wc1 = new WebClient();
-            String json1 = wc1.DownloadString("http://10.0.0.100/vote.php");
+            String json1 = wc1.DownloadString("http://10.0.0.100/vote");
             json1 = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(json1));
             String[] votes = json1.Split(new String[] { "}," }, StringSplitOptions.RemoveEmptyEntries);
             foreach (String vote in votes)
@@ -27,16 +27,16 @@ namespace vAdmin
                 voteList.Add(new Pair<ulong, String>(id, name));
             }
             WebClient wc = new WebClient();
-            String json = wc.DownloadString("http://10.0.0.100/contender.php");
+            String json = wc.DownloadString("http://10.0.0.100/rival");
             json = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(json));
-            String[] contenders = json.Split(new String[] { "}," }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (String contender in contenders)
+            String[] rivals = json.Split(new String[] { "}," }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (String rival in rivals)
             {
-                ulong id = Convert.ToUInt64(contender.Substring(contender.IndexOf("\"id\":") + 5, contender.IndexOf(",", contender.IndexOf("\"id\":") + 5) - contender.IndexOf("\"id\":") - 5));
-                String name = contender.Substring(contender.IndexOf("\"name\":") + 8, contender.IndexOf("\",", contender.IndexOf("\"name\":") + 8) - contender.IndexOf("\"name\":") - 8);
-                String description = contender.Substring(contender.IndexOf("\"description\":") + 15, contender.IndexOf("\"", contender.IndexOf("\"description\":") + 15) - contender.IndexOf("\"description\":") - 15);
-                short position = Convert.ToInt16(contender.Substring(contender.IndexOf("\"position\":") + 11, contender.IndexOf(",", contender.IndexOf("\"position\":") + 11) - contender.IndexOf("\"position\":") - 11));
-                ulong vid = Convert.ToUInt64(contender.Substring(contender.IndexOf("\"vid\":") + 6, contender.IndexOf("}", contender.IndexOf("\"vid\":") + 6) - contender.IndexOf("\"vid\":") - 6));
+                ulong id = Convert.ToUInt64(rival.Substring(rival.IndexOf("\"id\":") + 5, rival.IndexOf(",", rival.IndexOf("\"id\":") + 5) - rival.IndexOf("\"id\":") - 5));
+                String name = rival.Substring(rival.IndexOf("\"name\":") + 8, rival.IndexOf("\",", rival.IndexOf("\"name\":") + 8) - rival.IndexOf("\"name\":") - 8);
+                String description = rival.Substring(rival.IndexOf("\"description\":") + 15, rival.IndexOf("\"", rival.IndexOf("\"description\":") + 15) - rival.IndexOf("\"description\":") - 15);
+                short position = Convert.ToInt16(rival.Substring(rival.IndexOf("\"position\":") + 11, rival.IndexOf(",", rival.IndexOf("\"position\":") + 11) - rival.IndexOf("\"position\":") - 11));
+                ulong vid = Convert.ToUInt64(rival.Substring(rival.IndexOf("\"vid\":") + 6, rival.IndexOf("}", rival.IndexOf("\"vid\":") + 6) - rival.IndexOf("\"vid\":") - 6));
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.Tag = id;
@@ -51,18 +51,18 @@ namespace vAdmin
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editContender nc = new editContender();
+            editRival nc = new editRival();
             if (nc.ShowDialog() == DialogResult.OK)
             {
                 Pair<ulong, String> selectedVote = (Pair<ulong, String>)nc.cbVote.SelectedItem;
                 short _position = nc.cbPosition.SelectedText.Length > 0 ? Convert.ToInt16(nc.cbPosition.SelectedText) : (short)0;
-                String contender = addContender(nc.txtName.Text, nc.txtDescription.Text, _position, selectedVote.a);
+                String rival = addRival(nc.txtName.Text, nc.txtDescription.Text, _position, selectedVote.a);
 
-                ulong id = Convert.ToUInt64(contender.Substring(contender.IndexOf("\"id\":") + 5, contender.IndexOf(",", contender.IndexOf("\"id\":") + 5) - contender.IndexOf("\"id\":") - 5));
-                String name = contender.Substring(contender.IndexOf("\"name\":") + 8, contender.IndexOf("\",", contender.IndexOf("\"name\":") + 8) - contender.IndexOf("\"name\":") - 8);
-                String description = contender.Substring(contender.IndexOf("\"description\":") + 15, contender.IndexOf("\"", contender.IndexOf("\"description\":") + 15) - contender.IndexOf("\"description\":") - 15);
-                short position = Convert.ToInt16(contender.Substring(contender.IndexOf("\"position\":") + 11, contender.IndexOf(",", contender.IndexOf("\"position\":") + 11) - contender.IndexOf("\"position\":") - 11));
-                ulong vid = Convert.ToUInt64(contender.Substring(contender.IndexOf("\"vid\":") + 6, contender.IndexOf("}", contender.IndexOf("\"vid\":") + 6) - contender.IndexOf("\"vid\":") - 6));
+                ulong id = Convert.ToUInt64(rival.Substring(rival.IndexOf("\"id\":") + 5, rival.IndexOf(",", rival.IndexOf("\"id\":") + 5) - rival.IndexOf("\"id\":") - 5));
+                String name = rival.Substring(rival.IndexOf("\"name\":") + 8, rival.IndexOf("\",", rival.IndexOf("\"name\":") + 8) - rival.IndexOf("\"name\":") - 8);
+                String description = rival.Substring(rival.IndexOf("\"description\":") + 15, rival.IndexOf("\"", rival.IndexOf("\"description\":") + 15) - rival.IndexOf("\"description\":") - 15);
+                short position = Convert.ToInt16(rival.Substring(rival.IndexOf("\"position\":") + 11, rival.IndexOf(",", rival.IndexOf("\"position\":") + 11) - rival.IndexOf("\"position\":") - 11));
+                ulong vid = Convert.ToUInt64(rival.Substring(rival.IndexOf("\"vid\":") + 6, rival.IndexOf("}", rival.IndexOf("\"vid\":") + 6) - rival.IndexOf("\"vid\":") - 6));
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.Tag = id;
@@ -75,13 +75,13 @@ namespace vAdmin
             }
         }
 
-        String addContender(String name, String description, short position, ulong vid)
+        String addRival(String name, String description, short position, ulong vid)
         {
             WebClient wc = new WebClient();
             String data = "name=" + System.Web.HttpUtility.UrlEncode(name) + "&description=" + System.Web.HttpUtility.UrlEncode(description) +
                           "&position=" + position.ToString() + "&vid=" + vid.ToString();
             wc.Headers.Set(HttpRequestHeader.ContentType, "application/x-www-form-urlencoded");
-            String ret = System.Text.Encoding.UTF8.GetString(wc.UploadData("http://10.0.0.100/contender.php", System.Text.Encoding.Default.GetBytes(data)));
+            String ret = System.Text.Encoding.UTF8.GetString(wc.UploadData("http://10.0.0.100/rival", System.Text.Encoding.Default.GetBytes(data)));
             return ret;
         }
     }

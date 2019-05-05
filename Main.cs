@@ -12,7 +12,7 @@ namespace vAdmin
 
         Addresses address;
         Votes votes;
-        Contenders contenders;
+        Rivals rivals;
 
         private void адресаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -40,14 +40,14 @@ namespace vAdmin
 
         private void кандидатыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (contenders == null || contenders.IsDisposed)
+            if (rivals == null || rivals.IsDisposed)
             {
-                contenders = new Contenders();
-                contenders.MdiParent = this;
-                contenders.Show();
+                rivals = new Rivals();
+                rivals.MdiParent = this;
+                rivals.Show();
             }
             else
-                contenders.Focus();
+                rivals.Focus();
         }
     }
 }

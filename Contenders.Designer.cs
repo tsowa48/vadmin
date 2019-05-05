@@ -1,6 +1,6 @@
 ﻿namespace vAdmin
 {
-    partial class Contenders
+    partial class Rivals
     {
         /// <summary>
         /// Required designer variable.
@@ -152,17 +152,17 @@
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
-            // Contenders
+            // Rivals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 455);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Contenders";
+            this.Name = "Rivals";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Альтернативы";
-            this.Load += new System.EventHandler(this.Contenders_Load);
+            this.Load += new System.EventHandler(this.Rivals_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace vAdmin
 {
-    partial class editContender
+    partial class editRival
     {
         /// <summary>
         /// Required designer variable.
@@ -132,7 +132,7 @@
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // editContender
+            // editRival
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,12 +149,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "editContender";
+            this.Name = "editRival";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Альтернатива";
-            this.Load += new System.EventHandler(this.editContender_Load);
+            this.Load += new System.EventHandler(this.editRival_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

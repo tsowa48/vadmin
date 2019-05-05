@@ -24,13 +24,13 @@ namespace vAdmin
         String getAddressById(ulong id)
         {
             WebClient wc = new WebClient();
-            String ret = wc.DownloadString("http://10.0.0.100/address.php?id=" + id.ToString());
+            String ret = wc.DownloadString("http://10.0.0.100/address?id=" + id.ToString());
             return ret;
         }
         String getAddressByParent(ulong parent)
         {
             WebClient wc = new WebClient();
-            String ret = wc.DownloadString("http://10.0.0.100/address.php?parent=" + parent.ToString());
+            String ret = wc.DownloadString("http://10.0.0.100/address?parent=" + parent.ToString());
             return ret;
         }
 
