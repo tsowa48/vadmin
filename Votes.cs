@@ -150,7 +150,7 @@ namespace vAdmin
         {
             List<ulong> aids = new List<ulong>();
             CheckedNodes(aids, tv.Nodes[0]);
-            return "";//return "&aids=" + String.Join(",", aids);
+            return "&aids=" + String.Join(",", aids);
         }
 
         void CheckedNodes(List<ulong> aids, TreeNode node)
