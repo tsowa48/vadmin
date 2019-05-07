@@ -20,7 +20,7 @@ namespace vAdmin
             String data = "name=" + System.Web.HttpUtility.UrlEncode(name) + "&start=" + start.ToString() + "&stop=" + stop.ToString() + "&max=" + max.ToString();
             data += aids_array;
             wc.Headers.Set(HttpRequestHeader.ContentType, "application/x-www-form-urlencoded");
-            String ret = System.Text.Encoding.UTF8.GetString(wc.UploadData("http://10.0.0.100/vote", System.Text.Encoding.Default.GetBytes(data)));
+            String ret = System.Text.Encoding.UTF8.GetString(wc.UploadData(Program.BASE + "/vote", System.Text.Encoding.Default.GetBytes(data)));
             return ret;
         }
 
@@ -58,8 +58,10 @@ namespace vAdmin
         private void Votes_Load(object sender, EventArgs e)
         {
             WebClient wc = new WebClient();
-            String json = wc.DownloadString("http://10.0.0.100/vote");
+            String json = wc.DownloadString(Program.BASE + "/vote");
             json = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(json));
+            if ("[]".Equals(json))
+                return;
             String[] votes = json.Split(new String[] { "}," }, StringSplitOptions.RemoveEmptyEntries);
             foreach(String vote in votes)
             {
@@ -82,9 +84,11 @@ namespace vAdmin
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
             WebClient wc = new WebClient();
             ulong id = Convert.ToUInt64(dataGridView1.SelectedRows[0].Tag);
-            String vote = wc.DownloadString("http://10.0.0.100/vote?id=" + id.ToString());
+            String vote = wc.DownloadString(Program.BASE + "/vote?id=" + id.ToString());
             vote = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(vote));
             String name = vote.Substring(vote.IndexOf("\"name\":") + 8, vote.IndexOf("\",", vote.IndexOf("\"name\":") + 8) - vote.IndexOf("\"name\":") - 8);
             long start = Convert.ToInt64(vote.Substring(vote.IndexOf("\"start\":") + 8, vote.IndexOf(",", vote.IndexOf("\"start\":") + 8) - vote.IndexOf("\"start\":") - 8));
@@ -113,7 +117,7 @@ namespace vAdmin
                     String data = "id=" + id.ToString() + "&name=" + System.Web.HttpUtility.UrlEncode(_name) +
                                   "&start=" + startTicks.ToString() + "&stop=" + stopTicks + "&max=" + _max;
                     data += updateAddress(nv.tvAddress);//<----------------------------------------------------------------------------
-                    WebRequest r = WebRequest.Create("http://10.0.0.100/vote");
+                    WebRequest r = WebRequest.Create(Program.BASE + "/vote");
                     r.ContentType = "application/x-www-form-urlencoded";
                     r.Method = "PUT";
                     r.GetRequestStream().Write(System.Text.Encoding.Default.GetBytes(data), 0, data.Length);

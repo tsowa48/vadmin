@@ -52,17 +52,17 @@
     <Compile Include="Addresses.Designer.cs">
       <DependentUpon>Addresses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contenders.cs">
+    <Compile Include="Rivals.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Contenders.Designer.cs">
-      <DependentUpon>Contenders.cs</DependentUpon>
+    <Compile Include="Rivals.Designer.cs">
+      <DependentUpon>Rivals.cs</DependentUpon>
     </Compile>
-    <Compile Include="editContender.cs">
+    <Compile Include="editRival.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="editContender.Designer.cs">
-      <DependentUpon>editContender.cs</DependentUpon>
+    <Compile Include="editRival.Designer.cs">
+      <DependentUpon>editRival.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -88,11 +88,11 @@
     <EmbeddedResource Include="Addresses.resx">
       <DependentUpon>Addresses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Contenders.resx">
-      <DependentUpon>Contenders.cs</DependentUpon>
+    <EmbeddedResource Include="Rivals.resx">
+      <DependentUpon>Rivals.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="editContender.resx">
-      <DependentUpon>editContender.cs</DependentUpon>
+    <EmbeddedResource Include="editRival.resx">
+      <DependentUpon>editRival.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

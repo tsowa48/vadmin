@@ -17,7 +17,7 @@ namespace vAdmin
         {
             long now = DateTime.Now.Ticks;
             WebClient wc = new WebClient();
-            String json = wc.DownloadString("http://10.0.0.100/vote");
+            String json = wc.DownloadString(Program.BASE + "/vote");
             json = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(json));
             String[] votes = json.Split(new String[] { "}," }, StringSplitOptions.RemoveEmptyEntries);
             foreach (String vote in votes)
