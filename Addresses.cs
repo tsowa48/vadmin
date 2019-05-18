@@ -87,6 +87,11 @@ namespace vAdmin
         {
             TreeNode tn = treeView1.SelectedNode;
             String name = Microsoft.VisualBasic.Interaction.InputBox("Новый адрес:");
+            if (name == "")
+            {
+                MessageBox.Show("Адрес не должен быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             UInt64 parent = Convert.ToUInt64(tn.Tag);
             String json = addAddress(name, parent);
             TreeNode newTn = new TreeNode(name);
@@ -99,6 +104,11 @@ namespace vAdmin
             TreeNode tn = treeView1.SelectedNode;
             String address = tn.FullPath.Substring(tn.FullPath.IndexOf("\\") + 1).Replace("\\", ", ");
             String name = Microsoft.VisualBasic.Interaction.InputBox("Новый адрес:");
+            if (name == "")
+            {
+                MessageBox.Show("Адрес не должен быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             UInt64 parent = Convert.ToUInt64(tn.Tag);
             String id = addAddress(name, parent, address + ", " + name);
             TreeNode newTn = new TreeNode(name);
