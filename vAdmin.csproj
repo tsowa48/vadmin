@@ -52,6 +52,18 @@
     <Compile Include="Addresses.Designer.cs">
       <DependentUpon>Addresses.cs</DependentUpon>
     </Compile>
+    <Compile Include="editPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editPeople.Designer.cs">
+      <DependentUpon>editPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Peoples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Peoples.Designer.cs">
+      <DependentUpon>Peoples.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rivals.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     </Compile>
     <EmbeddedResource Include="Addresses.resx">
       <DependentUpon>Addresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editPeople.resx">
+      <DependentUpon>editPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Peoples.resx">
+      <DependentUpon>Peoples.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rivals.resx">
       <DependentUpon>Rivals.cs</DependentUpon>

@@ -85,11 +85,11 @@
             // 
             // гражданеToolStripMenuItem
             // 
-            this.гражданеToolStripMenuItem.Enabled = false;
             this.гражданеToolStripMenuItem.Name = "гражданеToolStripMenuItem";
             this.гражданеToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
             this.гражданеToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.гражданеToolStripMenuItem.Text = "Граждане";
+            this.гражданеToolStripMenuItem.Click += new System.EventHandler(this.гражданеToolStripMenuItem_Click);
             // 
             // Main
             // 

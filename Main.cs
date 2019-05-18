@@ -13,6 +13,7 @@ namespace vAdmin
         Addresses address;
         Votes votes;
         Rivals rivals;
+        Peoples peoples;
 
         private void адресаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -48,6 +49,18 @@ namespace vAdmin
             }
             else
                 rivals.Focus();
+        }
+
+        private void гражданеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (peoples == null || peoples.IsDisposed)
+            {
+                peoples = new Peoples();
+                peoples.MdiParent = this;
+                peoples.Show();
+            }
+            else
+                peoples.Focus();
         }
     }
 }
